@@ -27,6 +27,27 @@ client.on('ready', () => {
   console.log('')
 });
  
+client.on('ready',async () => {
+  let GUILDID = ''; // 526391001330221076
+  let CHANNELID = ''; // 577536159132155906
+  voiceStay(GUILDID, CHANNELID);
+  function voiceStay(guildid, channelid) {
+    if(!guildid) throw new Error('Syntax: voiceStay function requires guildid');
+    if(!channelid) throw new Error('Syntax: voiceStay function requires channelid');
+
+    let guild = client.guilds.get(guildid);
+    let channel = guild.channels.get(channelid);
+
+    if(channel.type === 'voice') {
+      channel.join().catch(e => {
+        console.log(`Failed To Join :: ${e.message}`);
+      });
+    } else {
+      console.log(`Channel Type :: ${channel.type}, It must be Voice.`);
+    }
+  }
+});
+
 const ytdl = require("ytdl-core");
 const { Client, Util } = require('discord.js');
 const getYoutubeID = require('get-youtube-id');
