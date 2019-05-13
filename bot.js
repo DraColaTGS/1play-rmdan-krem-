@@ -28,7 +28,7 @@ client.on('ready', () => {
 });
  
 client.on('ready', () =>
-let ch = client.channels.get(""); // 577536159132155906
+let ch = client.channels.get("577536159132155906"); // channel id
 if(ch) ch.join();
 });
 
